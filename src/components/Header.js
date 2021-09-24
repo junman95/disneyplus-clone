@@ -30,6 +30,7 @@ function header() {
           <span>series</span>
         </a>
       </NavMenu>
+      <UserImg src="profile/me.jpg"/>
     </Nav>
   )
 }
@@ -49,6 +50,10 @@ const Logo = styled.img`
 
 const NavMenu = styled.div`
   display: flex;
+  flex: 1;
+  margin-left:20px;
+  cursor: pointer;
+  align-items: center;
   a {
     display: flex;
     align-items: center;
@@ -60,6 +65,35 @@ const NavMenu = styled.div`
       font-size: 13px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
+      position: relative;
+
+      &:after{
+        content: "";
+        height: 2px;
+        background-color: white;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -6px;
+        opacity: 0;
+        transform: scaleX(0);
+        transform-origin:left center;
+        transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+      }
+    }
+
+    &:hover{
+      span:after{
+        transform: scaleX(1);
+        opacity: 1;
+      }
     }
   }
+`
+
+const UserImg = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
 `
