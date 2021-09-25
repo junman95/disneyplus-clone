@@ -1,14 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 function header() {
   return (
     <Nav>
       <Logo src="images/logo.svg" />
       <NavMenu>
-        <a href="/disneyplus-clone/">
+        <Link to="/">
           <img src="images/home-icon.svg" />
           <span>Home</span>
-        </a>
+        </Link>
         <a>
           <img src="images/search-icon.svg" />
           <span>Search</span>
@@ -30,9 +32,9 @@ function header() {
           <span>series</span>
         </a>
       </NavMenu>
-      <a href="/disneyplus-clone/login">
+      <Link to="/login">
         <UserImg src="profile/me.jpg" />
-      </a>
+      </Link>
     </Nav>
   );
 }
