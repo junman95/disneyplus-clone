@@ -5,7 +5,7 @@ function header() {
     <Nav>
       <Logo src="images/logo.svg" />
       <NavMenu>
-        <a href="/">
+        <a href="/disneyplus-clone/">
           <img src="images/home-icon.svg" />
           <span>Home</span>
         </a>
@@ -30,7 +30,7 @@ function header() {
           <span>series</span>
         </a>
       </NavMenu>
-      <a href="/login">
+      <a href="/disneyplus-clone/login">
         <UserImg src="profile/me.jpg" />
       </a>
     </Nav>

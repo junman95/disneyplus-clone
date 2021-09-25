@@ -7,7 +7,7 @@ function Movies() {
       <h4>Recommended for You</h4>
       <Content>
         <Wrap>
-          <a href="/detail">
+          <a href="/disneyplus-clone/detail">
             <img src="https://blog.kakaocdn.net/dn/bSnAxt/btqDGgD3wMx/s9ExsDd33hqHm0TNh27gb0/img.jpg" />
           </a>
         </Wrap>
