@@ -6,23 +6,22 @@ import Home from "./components/Home";
 import Detail from "./components/Detail";
 import Login from "./components/Login";
 //react-router
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import styled from "styled-components";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <Header />
 
         <Switch>
-          <Route path = "/disneyplus-clone/login">
+          <Route path = "/login">
             <Login />
           </Route>
-          <Route path="/disneyplus-clone/detail">
+          <Route path="/detail">
             <Detail />
           </Route>
-          <Route exact path="/disneyplus-clone/">
+          <Route exact path="/">
             <Home />
           </Route>
         </Switch>
