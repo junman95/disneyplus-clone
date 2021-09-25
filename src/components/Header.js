@@ -1,64 +1,68 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 function header() {
   return (
     <Nav>
       <Logo src="images/logo.svg" />
-      <NavMenu> 
-      <a>
-          <img src="images/home-icon.svg"/>
+      <NavMenu>
+        <a href="/">
+          <img src="images/home-icon.svg" />
           <span>Home</span>
         </a>
         <a>
-          <img src="images/search-icon.svg"/>
+          <img src="images/search-icon.svg" />
           <span>Search</span>
         </a>
         <a>
-          <img src="images/watchlist-icon.svg"/>
+          <img src="images/watchlist-icon.svg" />
           <span>watchlist</span>
         </a>
         <a>
-          <img src="images/original-icon.svg"/>
+          <img src="images/original-icon.svg" />
           <span>original</span>
         </a>
         <a>
-          <img src="images/movie-icon.svg"/>
+          <img src="images/movie-icon.svg" />
           <span>movie</span>
         </a>
         <a>
-          <img src="images/series-icon.svg"/>
+          <img src="images/series-icon.svg" />
           <span>series</span>
         </a>
       </NavMenu>
-      <UserImg src="profile/me.jpg"/>
+      <a href="/login">
+        <UserImg src="profile/me.jpg" />
+      </a>
     </Nav>
-  )
+  );
 }
 
-export default header
+export default header;
 
 const Nav = styled.div`
   height: 70px;
   background: #090b13;
-  display: flex ;
+  display: flex;
   align-items: center;
   padding: 0 36px;
   overflow: hidden;
-`
+`;
 const Logo = styled.img`
   width: 80px;
-`
+`;
 
 const NavMenu = styled.div`
   display: flex;
   flex: 1;
-  margin-left:20px;
+  margin-left: 20px;
   cursor: pointer;
   align-items: center;
   a {
     display: flex;
     align-items: center;
     padding: 0 12px;
+    text-decoration: none;
+
     img {
       height: 20px;
     }
@@ -68,7 +72,7 @@ const NavMenu = styled.div`
       text-transform: uppercase;
       position: relative;
 
-      &:after{
+      &:after {
         content: "";
         height: 2px;
         background-color: white;
@@ -78,23 +82,28 @@ const NavMenu = styled.div`
         bottom: -6px;
         opacity: 0;
         transform: scaleX(0);
-        transform-origin:left center;
+        transform-origin: left center;
         transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
       }
     }
 
-    &:hover{
-      span:after{
+    &:hover {
+      span:after {
         transform: scaleX(1);
         opacity: 1;
       }
     }
+
+    &:visited {
+      text-decoration: none;
+      color: white;
+    }
   }
-`
+`;
 
 const UserImg = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
-`
+`;
