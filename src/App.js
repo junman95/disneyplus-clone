@@ -16,13 +16,13 @@ function App() {
         <Header />
 
         <Switch>
-          <Route path = "/login">
+          <Route path = "/disneyplus-clone/login">
             <Login />
           </Route>
-          <Route path="/detail">
+          <Route path="/disneyplus-clone/detail">
             <Detail />
           </Route>
-          <Route exact path="/">
+          <Route exact path="/disneyplus-clone/">
             <Home />
           </Route>
         </Switch>
