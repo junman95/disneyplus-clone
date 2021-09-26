@@ -5,25 +5,25 @@ function Detail() {
   return (
     <Container>
       <Background>
-        <img src="https://image.api.playstation.com/vulcan/img/rnd/202011/0204/HTicpseR1SkvZTPq91UJB98Z.png" />
+        <img alt="background" src="https://image.api.playstation.com/vulcan/img/rnd/202011/0204/HTicpseR1SkvZTPq91UJB98Z.png" />
       </Background>
       <ImageTitle>
-        <img src="https://logos-download.com/wp-content/uploads/2016/09/SpongeBob_SquarePants_logo_wordmark.png" />
+        <img alt="title" src="https://logos-download.com/wp-content/uploads/2016/09/SpongeBob_SquarePants_logo_wordmark.png" />
       </ImageTitle>
       <Controls>
         <PlayButton>
-          <img src="images/play-icon-black.png" />
+          <img alt="playbutton" src="images/play-icon-black.png" />
           <span>Play</span>
         </PlayButton>
         <TrailerButton>
-          <img src="images/play-icon-white.png" />
+          <img alt="trailericon" src="images/play-icon-white.png" />
           <span>Trailer</span>
         </TrailerButton>
         <AddButton>
           <span>+</span>
         </AddButton>
         <GroupWatchButton>
-          <img src="images/group-icon.png" />
+          <img alt="groupwatchbutton" src="images/group-icon.png" />
         </GroupWatchButton>
       </Controls>
       <SubTitle>스폰지밥 네모바지 시즌 7+</SubTitle>

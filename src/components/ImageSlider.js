@@ -17,22 +17,22 @@ function ImageSlider() {
     <Carousal {...settings}>
       <Wrap>
         <a href="">
-          <img src="images/slider-badging.jpg" />
+          <img alt="" src="images/slider-badging.jpg" />
         </a>
       </Wrap>
       <Wrap>
         <a href="">
-          <img src="images/slider-badag.jpg" />
+          <img alt="" src="images/slider-badag.jpg" />
         </a>
       </Wrap>
       <Wrap>
         <a href="">
-          <img src="images/slider-scale.jpg" />
+          <img alt="" src="images/slider-scale.jpg" />
         </a>
       </Wrap>
       <Wrap>
         <a href="">
-          <img src="images/slider-scales.jpg" />
+          <img alt="" src="images/slider-scales.jpg" />
         </a>
       </Wrap>
     </Carousal>

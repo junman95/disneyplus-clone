@@ -1,40 +1,54 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { auth, provider } from "../firebase";
 
-function header() {
+function header(props) {
+  const handleAuth = () => {
+    auth
+      .signInWithPopup(provider)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <Nav>
       <Logo src="images/logo.svg" />
       <NavMenu>
         <Link to="/">
-          <img src="images/home-icon.svg" />
+          <img alt="Disney+" src="images/home-icon.svg" />
           <span>Home</span>
         </Link>
         <a>
-          <img src="images/search-icon.svg" />
+          <img alt="" src="images/search-icon.svg" />
           <span>Search</span>
         </a>
         <a>
-          <img src="images/watchlist-icon.svg" />
+          <img alt="" src="images/watchlist-icon.svg" />
           <span>watchlist</span>
         </a>
         <a>
-          <img src="images/original-icon.svg" />
+          <img alt="" src="images/original-icon.svg" />
           <span>original</span>
         </a>
         <a>
-          <img src="images/movie-icon.svg" />
+          <img alt="" src="images/movie-icon.svg" />
           <span>movie</span>
         </a>
         <a>
-          <img src="images/series-icon.svg" />
+          <img alt="" src="images/series-icon.svg" />
           <span>series</span>
         </a>
       </NavMenu>
-      <Link to="/login">
+      <Login onClick={handleAuth}>
+        Login
+      </Login>
+      {/*<Link to="/login">
         <UserImg src="profile/me.jpg" />
-      </Link>
+      </Link>*/}
     </Nav>
   );
 }
@@ -108,4 +122,18 @@ const UserImg = styled.img`
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
+`;
+
+const Login = styled.div`
+  border-radius: 4px;
+  border-color: white;
+  border: solid 1px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  font-size: 16px;
 `;
