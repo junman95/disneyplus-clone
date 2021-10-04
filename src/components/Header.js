@@ -1,59 +1,87 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+//firebase
 import { auth, provider } from "../firebase";
+//redux
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import {
+  selectUserName,
+  selectUserEmail,
+  selectUserPhoto,
+  setUserLoginDetails,
+} from "../features/user/userSlice";
 
-function header(props) {
+function Header(props) {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const userName = useSelector(selectUserName);
+  const userPhoto = useSelector(selectUserPhoto);
+  const userEmail = useSelector(selectUserEmail);
+  //google login
   const handleAuth = () => {
     auth
       .signInWithPopup(provider)
       .then((result) => {
-        console.log(result);
+        setUser(result.user);
       })
       .catch((error) => {
-        console.log(error);
+        alert(error.message);
       });
   };
+  //setting User informations to store
+  const setUser = (user) => {
+    dispatch(
+      setUserLoginDetails({
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+      })
+    );
+  };
+
   return (
     <Nav>
       <Logo src="images/logo.svg" />
-      <NavMenu>
-        <Link to="/">
-          <img alt="Disney+" src="images/home-icon.svg" />
-          <span>Home</span>
-        </Link>
-        <a>
-          <img alt="" src="images/search-icon.svg" />
-          <span>Search</span>
-        </a>
-        <a>
-          <img alt="" src="images/watchlist-icon.svg" />
-          <span>watchlist</span>
-        </a>
-        <a>
-          <img alt="" src="images/original-icon.svg" />
-          <span>original</span>
-        </a>
-        <a>
-          <img alt="" src="images/movie-icon.svg" />
-          <span>movie</span>
-        </a>
-        <a>
-          <img alt="" src="images/series-icon.svg" />
-          <span>series</span>
-        </a>
-      </NavMenu>
-      <Login onClick={handleAuth}>
-        Login
-      </Login>
-      {/*<Link to="/login">
-        <UserImg src="profile/me.jpg" />
-      </Link>*/}
+      {!userName ? (
+        <Login onClick={handleAuth}>Login</Login>
+      ) : (
+        <>
+          <NavMenu>
+            <Link to="/">
+              <img alt="Disney+" src="images/home-icon.svg" />
+              <span>Home</span>
+            </Link>
+            <a>
+              <img alt="" src="images/search-icon.svg" />
+              <span>Search</span>
+            </a>
+            <a>
+              <img alt="" src="images/watchlist-icon.svg" />
+              <span>watchlist</span>
+            </a>
+            <a>
+              <img alt="" src="images/original-icon.svg" />
+              <span>original</span>
+            </a>
+            <a>
+              <img alt="" src="images/movie-icon.svg" />
+              <span>movie</span>
+            </a>
+            <a>
+              <img alt="" src="images/series-icon.svg" />
+              <span>series</span>
+            </a>
+          </NavMenu>
+        </>
+      )}
+      {userPhoto ? <UserImg src={userPhoto} alt={userName}></UserImg> : <></>}
     </Nav>
   );
 }
 
-export default header;
+export default Header;
 
 const Nav = styled.div`
   height: 70px;
@@ -136,4 +164,5 @@ const Login = styled.div`
   text-transform: uppercase;
   letter-spacing: 1.6px;
   font-size: 16px;
+  margin-left: auto;
 `;
