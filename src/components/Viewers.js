@@ -6,18 +6,33 @@ function Viewers() {
     <Container>
       <Wrap>
         <img alt="" src = "images/viewers-disney.png"/>
+        <video autoPlay={true} loop={true} playsInline={true}>
+          <source src = 'videos/1564674844-disney.mp4' type='video/mp4' />
+        </video>
       </Wrap>
       <Wrap>
         <img alt="" src = "images/viewers-pixar.png"/>
+        <video autoPlay={true} loop={true} playsInline={true}>
+          <source src = 'videos/1564676714-pixar.mp4' type='video/mp4' />
+        </video>
       </Wrap>
       <Wrap>
         <img alt="" src = "images/viewers-marvel.png"/>
+        <video autoPlay={true} loop={true} playsInline={true}>
+          <source src = 'videos/1564676115-marvel.mp4' type='video/mp4' />
+        </video>
       </Wrap>
       <Wrap>
         <img alt="" src = "images/viewers-starwars.png"/>
+        <video autoPlay={true} loop={true} playsInline={true}>
+          <source src = 'videos/1608229455-star-wars.mp4' type='video/mp4' />
+        </video>
       </Wrap>
       <Wrap>
         <img alt="" src = "images/viewers-national.png"/>
+        <video autoPlay={true} loop={true} playsInline={true}>
+          <source src = 'videos/1564676296-national-geographic.mp4' type='video/mp4' />
+        </video>
       </Wrap>
     </Container>
   )
@@ -33,6 +48,8 @@ const Container = styled.div`
 `
 
 const Wrap = styled.div`
+  overflow: hidden;
+  position: relative;
   cursor: pointer;
   border-radius: 10px;
   border: 3px solid rgba(249, 249, 249, 0.1);
@@ -44,11 +61,28 @@ const Wrap = styled.div`
     height: 100%;
     object-fit: cover;
   }
+  video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 0;
+    opacity: 0;
+  }
 
   &:hover{
     transform: scale(1.05);
     border-color: rgba(249, 249, 249, 0.8);
     box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px,
       rgb(0 0 0 / 73%) 0px 16px 10px -10px;
+
+    video {
+      opacity: 1;
+      z-index: -1;
+      object-fit: cover;
+    }
   }
 `
