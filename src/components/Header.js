@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 //firebase
@@ -11,6 +11,7 @@ import {
   selectUserEmail,
   selectUserPhoto,
   setUserLoginDetails,
+  setSignOutState,
 } from "../features/user/userSlice";
 
 function Header(props) {
@@ -19,16 +20,37 @@ function Header(props) {
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
   const userEmail = useSelector(selectUserEmail);
+
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        setUser(user);
+        history.push("/");
+      }
+    });
+  }, [userName]);
   //google login
   const handleAuth = () => {
-    auth
-      .signInWithPopup(provider)
-      .then((result) => {
-        setUser(result.user);
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
+    if (!userName) {
+      auth
+        .signInWithPopup(provider)
+        .then((result) => {
+          setUser(result.user);
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    } else if (userName) {
+      auth
+        .signOut()
+        .then(() => {
+          dispatch(setSignOutState());
+          history.push("/login");
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    }
   };
   //setting User informations to store
   const setUser = (user) => {
@@ -74,9 +96,14 @@ function Header(props) {
               <span>series</span>
             </a>
           </NavMenu>
+          <SignOut>
+            <UserImg src={userPhoto} onClick={handleAuth} alt={userName} />
+            <DropDown >
+              <span>Sign out</span>
+            </DropDown>
+          </SignOut>
         </>
       )}
-      {userPhoto ? <UserImg src={userPhoto} alt={userName}></UserImg> : <></>}
     </Nav>
   );
 }
@@ -89,7 +116,6 @@ const Nav = styled.div`
   display: flex;
   align-items: center;
   padding: 0 36px;
-  overflow: hidden;
 `;
 const Logo = styled.img`
   width: 80px;
@@ -145,13 +171,6 @@ const NavMenu = styled.div`
   }
 `;
 
-const UserImg = styled.img`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-`;
-
 const Login = styled.div`
   border-radius: 4px;
   border-color: white;
@@ -165,4 +184,42 @@ const Login = styled.div`
   letter-spacing: 1.6px;
   font-size: 16px;
   margin-left: auto;
+`;
+
+const DropDown = styled.div`
+  position: absolute;
+  top: 48px;
+  right: 0px;
+  background: rgb(19, 19, 10);
+  border: 1px solid rgba(151, 151, 151, 0.34);
+  border-radius: 4px;
+  box-shadow: rgb(0 0 0 / 50%) 0px 0px 18px 0px;
+  padding: 10px;
+  font-size: 14px;
+  letter-spacing: 3px;
+  width: 100px;
+  opacity: 0;
+  transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+`;
+
+const SignOut = styled.div`
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  &:hover {
+    ${DropDown} {
+      opacity: 1;
+      transition-duration: 1s;
+      z-index: 99999;
+    }
+  }
+`;
+
+const UserImg = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
 `;
