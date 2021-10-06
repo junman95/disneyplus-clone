@@ -65,7 +65,9 @@ function Header(props) {
 
   return (
     <Nav>
-      <Logo src="images/logo.svg" />
+      <Link to="/">
+        <Logo src="images/logo.svg" />
+      </Link>
       {!userName ? (
         <Login onClick={handleAuth}>Login</Login>
       ) : (
@@ -119,6 +121,7 @@ const Nav = styled.div`
 `;
 const Logo = styled.img`
   width: 80px;
+  cursor: pointer;
 `;
 
 const NavMenu = styled.div`
