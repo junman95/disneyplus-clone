@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
+//firebase
+import db from "../firebase";
 
-function Detail() {
+function Detail(props) {
+  const { id } = useParams();
+  const [detailData, setDetailData] = useState({});
+  console.log(useParams());
+  useEffect(() => {
+    db.collection("movies")
+      .doc(id)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setDetailData(doc.data());
+          console.log(doc.data());
+        } else {
+          console.log("no such document in firebase");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document: ", error);
+      });
+  }, [id]);
   return (
     <Container>
       <Background>
-        <img alt="background" src="https://image.api.playstation.com/vulcan/img/rnd/202011/0204/HTicpseR1SkvZTPq91UJB98Z.png" />
+        <img alt={detailData.title} src={detailData.backgroundImg} />
       </Background>
       <ImageTitle>
-        <img alt="title" src="https://logos-download.com/wp-content/uploads/2016/09/SpongeBob_SquarePants_logo_wordmark.png" />
+        <img alt={detailData.title} src={detailData.titleImg} />
       </ImageTitle>
       <Controls>
         <PlayButton>
@@ -26,13 +48,8 @@ function Detail() {
           <img alt="groupwatchbutton" src="images/group-icon.png" />
         </GroupWatchButton>
       </Controls>
-      <SubTitle>스폰지밥 네모바지 시즌 7+</SubTitle>
-      <Description>
-        바닷속 파인애플 집에 사는 노랗고 네모난 스폰지밥. 특기는 햄버거
-        뒤집기요, 취미는 해파리 사냥이라지. 맛있는 음식을 뚝딱 만들어내고,
-        친구들과 짜릿한 모험도 즐기는 하루하루. 듣기만 해도 신나? 그럼 우리 같이
-        떠나! 
-      </Description>
+      <SubTitle>{detailData.title}</SubTitle>
+      <Description>{detailData.description}</Description>
     </Container>
   );
 }

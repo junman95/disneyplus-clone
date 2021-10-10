@@ -12,7 +12,6 @@ import db from "../firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUserName } from "../features/user/userSlice";
 import { setMovies } from "../features/movie/movieSlice";
-import { selectRecommend } from "../features/movie/movieSlice";
 
 const Home = (props) => {
   const dispatch = useDispatch();
