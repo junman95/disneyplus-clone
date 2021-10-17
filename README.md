@@ -1,44 +1,43 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+# 디즈니 플러스 웹 앱 제작
 
-## Available Scripts
+리액트와 파이어베이스를 이용한 웹사이트 제작. 📃
+<br>
+<img src="https://blog.kakaocdn.net/dn/65Ilt/btqXDeNOyNX/l4DPik8EBYAh8v0Ze1Dey0/img.jpg" width=300 align=right>
 
-In the project directory, you can run:
 
-### `npm start`
+# CLONE PROGRAMMING
+  
+**개발 프로젝트명**: Disney Plus<br>
+**프로젝트 기간**: 2021.09.24 ~ 2021.10.17
+<br><br>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# 기술 스택
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+|Category| Name |
+| --- | --- |
+|Language|Javascript ECMA10|
+|Web Framework|React 17.0.2|
+|State Control|Redux 7.11.1|
+|Database|Firebase Firestore|
 
-### `npm test`
+# 개발 동기
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+리액트 서버리스 개발을 학습해 보기 위해, 파이어베이스와 리액트를 사용하여 디즈니 플러스 웹앱을
+클론 코딩하며 학습했습니다.
+프론트엔드 코드 설계 구조에 대한 학습을 1차 목표로 삼았고, 부수적 목표로 파이어베이스 사용과
+리덕스 상태관리 그리고 SASS활용을 목표했습니다.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# 개발 의의
+ * React + Redux 사용
+ * 서버리스 개발 지향
+ * 컴포넌트 기능 및 페이지 단위 분리
+ * SASS 활용 인라인 css 작성
+    > FrontEnd : 최준만
+    > Database : 최준만 
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# 링크
+ * 홈페이지 : https://junman95.github.io/disneyplus-clone/
+[![Youtube](https://i.imgur.com/FfhxaRa.jpg)](https://www.youtube.com/watch?v=YyDl2aqG6u8)
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
