@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
   selectUserName,
-  selectUserEmail,
   selectUserPhoto,
   setUserLoginDetails,
   setSignOutState,
@@ -19,7 +18,6 @@ function Header(props) {
   const history = useHistory();
   const userName = useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
-  const userEmail = useSelector(selectUserEmail);
 
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
@@ -77,23 +75,23 @@ function Header(props) {
               <img alt="Disney+" src="images/home-icon.svg" />
               <span>Home</span>
             </Link>
-            <a>
+            <a href>
               <img alt="" src="images/search-icon.svg" />
               <span>Search</span>
             </a>
-            <a>
+            <a href>
               <img alt="" src="images/watchlist-icon.svg" />
               <span>watchlist</span>
             </a>
-            <a>
+            <a href>
               <img alt="" src="images/original-icon.svg" />
               <span>original</span>
             </a>
-            <a>
+            <a href>
               <img alt="" src="images/movie-icon.svg" />
               <span>movie</span>
             </a>
-            <a>
+            <a href>
               <img alt="" src="images/series-icon.svg" />
               <span>series</span>
             </a>

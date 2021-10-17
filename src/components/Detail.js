@@ -3,11 +3,18 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 //firebase
 import db from "../firebase";
+//Link to Youtube
+import VideoModal from "./VideoModal";
 
 function Detail(props) {
   const { id } = useParams();
   const [detailData, setDetailData] = useState({});
-  console.log(useParams());
+  const [isPlayClicked, setIsPlayClicked] = useState(false);
+  const clickCheck = () => {
+    setIsPlayClicked(false);
+    console.log(isPlayClicked);
+  };
+
   useEffect(() => {
     db.collection("movies")
       .doc(id)
@@ -29,26 +36,37 @@ function Detail(props) {
       <Background>
         <img alt={detailData.title} src={detailData.backgroundImg} />
       </Background>
+      {isPlayClicked ? (
+        <VideoModal onClick={clickCheck} detailData={detailData} />
+      ) : null}
       <ImageTitle>
         <img alt={detailData.title} src={detailData.titleImg} />
       </ImageTitle>
       <Controls>
-        <PlayButton>
-          <img alt="playbutton" src="images/play-icon-black.png" />
+        <PlayButton
+          onClick={() => {
+            setIsPlayClicked(true);
+          }}
+        >
+          <img alt="playbutton" src="/images/play-icon-black.png" />
           <span>Play</span>
         </PlayButton>
-        <TrailerButton>
-          <img alt="trailericon" src="images/play-icon-white.png" />
+        <TrailerButton
+          onClick={() => {
+            setIsPlayClicked(true);
+          }}
+        >
+          <img alt="trailericon" src="/images/play-icon-white.png" />
           <span>Trailer</span>
         </TrailerButton>
         <AddButton>
           <span>+</span>
         </AddButton>
         <GroupWatchButton>
-          <img alt="groupwatchbutton" src="images/group-icon.png" />
+          <img alt="groupwatchbutton" src="/images/group-icon.png" />
         </GroupWatchButton>
       </Controls>
-      <SubTitle>{detailData.title}</SubTitle>
+      <SubTitle>{detailData.subTitle}</SubTitle>
       <Description>{detailData.description}</Description>
     </Container>
   );
@@ -95,6 +113,7 @@ const ImageTitle = styled.div`
 const Controls = styled.div`
   display: flex;
   align-items: center;
+  margin-top: 5%;
 `;
 
 const PlayButton = styled.button`
