@@ -39,5 +39,4 @@
 
 # 링크
  * 홈페이지 : https://junman95.github.io/disneyplus-clone/
-[![Youtube](https://i.imgur.com/FfhxaRa.jpg)](https://www.youtube.com/watch?v=YyDl2aqG6u8)
 
