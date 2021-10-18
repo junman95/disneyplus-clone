@@ -41,4 +41,5 @@
  * 홈페이지 : https://junman95.github.io/disneyplus-clone/
 
 # 시연
-![](https://i.imgur.com/AEs9r1l.png)  |
+![disneyplus시연](https://user-images.githubusercontent.com/22022776/137668989-f2b74c63-d11e-4c19-8377-8342026ae195.gif)
+
